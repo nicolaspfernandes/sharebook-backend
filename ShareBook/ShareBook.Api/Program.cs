@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using System.IO;
 
 namespace ShareBook.Api
 {
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {      
             BuildWebHost(args).Run();
         }
 

@@ -21,9 +21,11 @@ namespace ShareBook.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IHostingEnvironment _hostingEnvironment;
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            _hostingEnvironment = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -34,7 +36,7 @@ namespace ShareBook.Api
 
             RegisterHealthChecks(services, Configuration.GetConnectionString("DefaultConnection"));
 
-            services.RegisterRepositoryServices();
+            services.RegisterRepositoryServices(_hostingEnvironment);
             //auto mapper start 
             AutoMapperConfig.RegisterMappings();
 
